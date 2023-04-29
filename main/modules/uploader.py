@@ -58,8 +58,9 @@ async def upload_video(msg: Message,file,id,tit,name,ttl,sourcetext,untext,nyaas
             thumbnail = await generate_thumbnail(id,file)
 
             filed = os.path.basename(file)
-            filed = filed.rsplit(' ', 1)[0]
-            filed = filed.replace("[1080p] [Multi-Subs]", "[720p x265] @animxt.mkv")
+            filed = filed.replace("[1080p] [Multi-Subs].mkv", "[720p x265] @animxt.mkv")
+            filed = filed.replace("[1080p] [Multi-Subs]", "[720p x265] @animxt")
+            filed = filed.replace("[1080p Web-DL].mkv", "[720p x265] @animxt.mkv")
             fukpath = "downloads/" + filed
             caption = f"{filed}"
             caption = caption.replace("[720p x265] @animxt.mkv", "") 

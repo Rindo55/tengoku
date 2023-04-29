@@ -35,7 +35,7 @@ from pyrogram.errors import FloodWait
 
 from main.inline import button1
 
-async def upload_video(msg: Message,file,id,tit,name,ttl,sourcetext,untext,subtitle,nyaasize):
+async def upload_video(msg: Message,file,id,tit,name,ttl,sourcetext,untext,nyaasize):
 
     try:
 
@@ -58,11 +58,11 @@ async def upload_video(msg: Message,file,id,tit,name,ttl,sourcetext,untext,subti
             thumbnail = await generate_thumbnail(id,file)
 
             filed = os.path.basename(file)
-            filed = filed.replace("[1080p Web-DL]", "[720p x265] @animxt")
+            filed = filed.replace("[1080p][ESP-LAT-ENG][mkv]", "[720p x265] @animxt")
             fukpath = "downloads/" + filed
             caption = f"{filed}"
             caption = caption.replace("[720p x265] @animxt.mkv", "") 
-            gcaption=f"**{caption}**" + "\n" +  f"__({tit})__" + "\n" + "━━━━━━━━━━━━━━━━━━━" + "\n" + "✓  `720p x265 10Bit`" + "\n" + f"✓  `{subtitle} ~ Subs`" + "\n" + "#Encoded #HEVC"
+            gcaption=f"**{caption}**" + "\n" +  f"__({tit})__" + "\n" + "━━━━━━━━━━━━━━━━━━━" + "\n" + "✓  `720p x265 10Bit`" + "\n" + f"✓  `English, Español (Castellano), Español (Latino)`" + "\n" + "#Encoded #HEVC"
             kayo_id = -1001642923224
             gay_id = 1159872623
             x = await app.send_document(
@@ -139,7 +139,7 @@ async def upload_video(msg: Message,file,id,tit,name,ttl,sourcetext,untext,subti
 async def start(bot, cmd: Message):
     usr_cmd = cmd.text.split("_", 1)[-1]
     kay_id = -1001642923224
-    if usr_cmd == "/start":
+    if usr_cmd == "/Start":
        await cmd.reply_text("Bot seems online! ⚡️")
     else:
         try:
@@ -151,4 +151,4 @@ async def start(bot, cmd: Message):
             message_ids = GetMessage.message_id
             await app.copy_message(chat_id=cmd.from_user.id, from_chat_id=kay_id, message_id=message_ids)
         except Exception as err:
-            await cmd.reply_text(f"Something went wrong!\n\n**Error:** `XXXXXXX`")
+            await cmd.reply_text(f"Something went wrong!\n\n**Error:**")

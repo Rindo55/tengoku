@@ -133,7 +133,7 @@ async def start_uploading(data):
         filed = filed.rsplit(' ', 1)[0]
         filed = filed.replace("[1080p] [Multi-Subs]", "[1080p Web-DL].mkv")
         filed = filed.replace("[TENGODKU]", "")
-        razo = filed.replace("[1080p] [Multi-Subs]", "[720p x265] @animxt.mkv")
+        razo = filed.replace("[1080p Web-DL].mkv", "[720p x265] @animxt.mkv")
         fpath = "downloads/" + filed
         ghostname = name
         ghostname = ghostname.replace("[1080p] [Multi-Subs]", "")

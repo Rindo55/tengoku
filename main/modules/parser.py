@@ -10,10 +10,7 @@ from main.inline import button1
 
 def trim_title(title: str):
     title = title.rsplit(' ', 1)[0]
-    title = title.replace("[Erai-raws] ", "")
-    title = title.replace("Dr. Stone - New World", "Dr Stone New World")
-    title = title.replace("Opus.COLORs", "Opus COLORs")
-    title = title.replace("Ousama Ranking - Yuuki no Takarabako", "Ousama Ranking Yuuki no Takarabako")
+    title = title.replace("[CameEsp]", "")
     ext = ".mkv"
     title = title + ext
     return title
@@ -23,7 +20,7 @@ def multi_sub(title: str):
     return subtitle
 
 def parse():
-    a = feedparser.parse("https://siftrss.com/f/oyebWJBqN8")
+    a = feedparser.parse("https://nyaa.si/?page=rss&u=Mayansito&q=tengoku%201080p")
     b = a["entries"]
     b = b[0:1]
     data = []    
@@ -71,10 +68,8 @@ async def auto_parser():
 
         try:
             await status.edit(await status_text("Idle..."),reply_markup=button1)
-            await update_schedule()
             await asyncio.sleep(6)
-            await update_schedulex()
         except:
             pass
 
-        await asyncio.sleep(30)
+        await asyncio.sleep(45)

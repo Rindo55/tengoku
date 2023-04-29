@@ -130,15 +130,16 @@ async def start_uploading(data):
         duration = get_duration(file)
         durationx = get_durationx(file)
         filed = os.path.basename(file)
-        filed = filed.replace("[1080p][ESP-ENG][mkv]", "[1080p Web-DL]")
-        filed = filed.replace("[CameEsp]", "")
-        razo = filed.replace("[1080p Web-DL]", "[720p x265] @animxt")
+        filed = filed.rsplit(' ', 1)[0]
+        filed = filed.replace("[1080p] [Multi-Subs]", "[1080p Web-DL].mkv")
+        filed = filed.replace("[TENGODKU]", "")
+        razo = filed.replace("[1080p] [Multi-Subs]", "[720p x265] @animxt.mkv")
         fpath = "downloads/" + filed
         ghostname = name
-        ghostname = ghostname.replace("[1080p][ESP-ENG][mkv]", "")
-        ghostname = ghostname.replace("[CameEsp]", "")
+        ghostname = ghostname.replace("[1080p] [Multi-Subs]", "")
+        ghostname = ghostname.replace("[TENGODKU]", "")
         main = await app.send_photo(KAYO_ID,photo=img,caption=caption)
-        guessname = f"**{ghostname}**" + "\n" + f"__({tit})__" + "\n" + "━━━━━━━━━━━━━━━━━━━" + "\n" + "✓  `1080p x264 Web-DL`" + "\n" + f"✓  `English, Español (Castellano), Español (Latino) ~ Subs`" + "\n" + "#Source #WebDL"
+        guessname = f"**{ghostname}**" + "\n" + f"__({tit})__" + "\n" + "━━━━━━━━━━━━━━━━━━━" + "\n" + "✓  `1080p x264 Web-DL`" + "\n" + f"✓  `Multiple ~ Subs`" + "\n" + "#Source #WebDL"
         
         thumbnail = await generate_thumbnail(id,file)
 
@@ -191,13 +192,13 @@ async def start_uploading(data):
             )        
         enrepl_markup=InlineKeyboardMarkup([[InlineKeyboardButton(
                                                               "💬Comments", url=encomment)]])
-        orgtext =  "**#Source_File**" + "\n" + f"**‣ File Name: `{filed}`**" + "\n" + "**‣ Video**: `1080p x264`" + "\n" + "**‣ Audio**: `Japanese`" + "\n" + f"**‣ Subtitle**: `English, Español (Castellano), Español (Latino)`" + "\n" + f"**‣ File Size**: `{nyaasize}`" + "\n" + f"**‣ Duration**: {durationx}" + "\n" + f"**‣ Downloads**: [🔗Telegram File]({source_link}) [🔗Gofile]({gofuk_text})"
+        orgtext =  "**#Source_File**" + "\n" + f"**‣ File Name: `{filed}`**" + "\n" + "**‣ Video**: `1080p x264`" + "\n" + "**‣ Audio**: `Japanese`" + "\n" + f"**‣ Subtitle**: `Japanese, English, Czech, Danish, German, Modern Greek (1453-), Spanish (Latin American), Spanish (European), Finnish, French (European), Hungarian, Italian, Korean, Dutch, Norwegian, Polish, Portuguese (Brazilian), Portuguese (European), Romanian, Slovak, Swedish, Turkish, Chinese (Hong Kong), Chinese (Traditional)`" + "\n" + f"**‣ File Size**: `{nyaasize}`" + "\n" + f"**‣ Duration**: {durationx}" + "\n" + f"**‣ Downloads**: [🔗Telegram File]({source_link}) [🔗Gofile]({gofuk_text})"
         await asyncio.sleep(5)
         untextx = await main.reply_text(orgtext)
         await asyncio.sleep(3)
         unitext = await untextx.edit(orgtext, reply_markup=repl_markup)
         await asyncio.sleep(5)
-        sourcetext =  f"**#Encoded_File**" + "\n" + f"**‣ File Name**: `{razo}`" + "\n" + "**‣ Video**: `720p HEVC x265 10Bit`" + "\n" + "**‣ Audio**: `Japanese`" + "\n" + f"**‣ Subtitle**: `English, Español (Castellano), Español (Latino)`"
+        sourcetext =  f"**#Encoded_File**" + "\n" + f"**‣ File Name**: `{razo}`" + "\n" + "**‣ Video**: `720p HEVC x265 10Bit`" + "\n" + "**‣ Audio**: `Japanese`" + "\n" + f"**‣ Subtitle**: `Japanese, English, Czech, Danish, German, Modern Greek (1453-), Spanish (Latin American), Spanish (European), Finnish, French (European), Hungarian, Italian, Korean, Dutch, Norwegian, Polish, Portuguese (Brazilian), Portuguese (European), Romanian, Slovak, Swedish, Turkish, Chinese (Hong Kong), Chinese (Traditional)`"
         untext = await main.reply_text(sourcetext)
         await asyncio.sleep(2)
         await app.send_sticker(KAYO_ID,"CAACAgUAAxkBAAEU_9FkRrLoli952oqIMVFPftW12xYLRwACGgADQ3PJEsT69_t2KrvBLwQ")

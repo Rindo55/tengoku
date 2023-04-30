@@ -58,8 +58,6 @@ async def upload_video(msg: Message,file,id,tit,name,ttl,sourcetext,untext,nyaas
             thumbnail = await generate_thumbnail(id,file)
 
             filed = os.path.basename(file)
-            filed = filed.replace("[1080p] [Multi-Subs].mkv", "[720p x265] @animxt.mkv")
-            filed = filed.replace("[1080p] [Multi-Subs]", "[720p x265] @animxt")
             filed = filed.replace("[1080p Web-DL].mkv", "[720p x265] @animxt.mkv")
             fukpath = "downloads/" + filed
             caption = f"{filed}"
@@ -138,20 +136,3 @@ async def upload_video(msg: Message,file,id,tit,name,ttl,sourcetext,untext,nyaas
 
     return x.message_id
 
-@app.on_message(filters.command("start") & filters.private)
-async def start(bot, cmd: Message):
-    usr_cmd = cmd.text.split("_", 1)[-1]
-    kay_id = -1001642923224
-    if usr_cmd == "/start":
-       await cmd.reply_text("Bot seems online! ⚡️")
-    else:
-        try:
-            try:
-                file_id = int(b64_to_str(usr_cmd).split("_")[-1])
-            except (Error, UnicodeDecodeError):
-                file_id = int(usr_cmd.split("_")[-1])
-            GetMessage = await app.get_messages(kay_id, message_ids=file_id)
-            message_ids = GetMessage.message_id
-            await app.copy_message(chat_id=cmd.from_user.id, from_chat_id=kay_id, message_id=message_ids)
-        except Exception as err:
-            await cmd.reply_text(f"Something went wrong!\n\n**Error:** `XXXXXXX`")

@@ -1,5 +1,4 @@
 import asyncio
-from main.modules.parser import auto_parser
 from main import app
 from pyrogram import filters, idle
 from pyrogram.types import Message

@@ -1,9 +1,11 @@
 import asyncio
+from main.modules.parser import auto_parser
 from main import app
 from pyrogram import filters, idle
 from pyrogram.types import Message
 from uvloop import install
 from contextlib import closing, suppress
+from main.modules.tg_handler import tg_handler
 
 loop = asyncio.get_event_loop()
 
@@ -15,6 +17,10 @@ async def start_bot():
   print("==================================")
   print("[INFO]: AutoAnimeBot Started Bot Successfully")
   print("==========JOIN @Latest_ongoing_airing_animes=========")
+
+  print("[INFO]: Adding Parsing Task")
+  asyncio.create_task(auto_parser())
+  asyncio.create_task(tg_handler())
   
   await idle()
   print("[INFO]: BOT STOPPED")

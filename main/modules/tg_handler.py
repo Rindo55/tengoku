@@ -129,13 +129,15 @@ async def start_uploading(data):
         duration = get_duration(file)
         durationx = get_durationx(file)
         filed = os.path.basename(file)
-        filed = filed.replace("Demon Slayer S04E04 1080p WEB H.264 E-AC-3 -Yandere-Raws (AMZN).mkv", "Demon Slayer S4 - 04 [1080p Web-DL].mkv")
+        filed = filed.replace("[1080p][ESP-ENG][mkv]", "[1080p Web-DL]")
+        filed = filed.replace("[CameEsp]", "")
         razo = filed.replace("[1080p Web-DL].mkv", "[720p x265] @animxt.mkv")
         fpath = "downloads/" + filed
         ghostname = name
-        ghostname = ghostname.replace("[1080p Web-DL]", "")
+        ghostname = ghostname.replace("[1080p][ESP-ENG][mkv]", "")
+        ghostname = ghostname.replace("[CameEsp]", "")
         main = await app.send_photo(KAYO_ID,photo=img,caption=caption)
-        guessname = f"**{ghostname}**" + "\n" + f"__({tit})__" + "\n" + "━━━━━━━━━━━━━━━━━━━" + "\n" + "✓  `1080p x264 Web-DL`" + "\n" + f"✓  `Multiple ~ Subs`" + "\n" + "#Source #WebDL"
+        guessname = f"**{ghostname}**" + "\n" + f"__({tit})__" + "\n" + "━━━━━━━━━━━━━━━━━━━" + "\n" + "✓  `1080p x264 Web-DL`" + "\n" + f"✓  `English, Español (Latino), Español (Castellano) ~ Subs`" + "\n" + "#Source #WebDL"
 
         thumbnail = await generate_thumbnail(id,file)
 
@@ -158,7 +160,7 @@ async def start_uploading(data):
         server = requests.get(url="https://api.gofile.io/getServer").json()["data"]["server"]
         uploadxz = requests.post(url=f"https://{server}.gofile.io/uploadFile", files={"upload_file": open(fpath, 'rb')}).json()
         directlink = uploadxz["data"]["downloadPage"]    
-        gotn_url = f"https://flashlink.in/api?api=aafa2d36a38398631679a74769a071b2154e08e7&url={directlink}&format=text"
+        gotn_url = f"https://tnlink.in/api?api=fea911843f6e7bec739708f3e562b56184342089&url={directlink}&format=text"
         gofinal = requests.get(gotn_url)
         go_text = gofinal.text
         gourl = go_text
@@ -188,13 +190,13 @@ async def start_uploading(data):
             )        
         enrepl_markup=InlineKeyboardMarkup([[InlineKeyboardButton(
                                                               "💬Comments", url=encomment)]])
-        orgtext =  "**#Source_File**" + "\n" + f"**‣ File Name: `{filed}`**" + "\n" + "**‣ Video**: `1080p x264`" + "\n" + "**‣ Audio**: `Japanese`" + "\n" + f"**‣ Subtitle**: `Japanese, English, Czech, Danish, German, Modern Greek (1453-), Spanish (Latin American), Spanish (European), Finnish, French (European), Hungarian, Italian, Korean, Dutch, Norwegian, Polish, Portuguese (Brazilian), Portuguese (European), Romanian, Slovak, Swedish, Turkish, Chinese (Hong Kong), Chinese (Traditional)`" + "\n" + f"**‣ File Size**: `{nyaasize}`" + "\n" + f"**‣ Duration**: {durationx}" + "\n" + f"**‣ Downloads**: [🔗Telegram File]({source_link}) [🔗Gofile]({gofuk_text})"
+        orgtext =  "**#Source_File**" + "\n" + f"**‣ File Name: `{filed}`**" + "\n" + "**‣ Video**: `1080p x264`" + "\n" + "**‣ Audio**: `Japanese`" + "\n" + f"**‣ Subtitle**: `English, Español (Latino), Español (Castellano)`" + "\n" + f"**‣ File Size**: `{nyaasize}`" + "\n" + f"**‣ Duration**: {durationx}" + "\n" + f"**‣ Downloads**: [🔗Telegram File]({source_link}) [🔗Gofile]({gofuk_text})"
         await asyncio.sleep(5)
         untextx = await main.reply_text(orgtext)
         await asyncio.sleep(3)
         unitext = await untextx.edit(orgtext, reply_markup=repl_markup)
         await asyncio.sleep(5)
-        sourcetext =  f"**#Encoded_File**" + "\n" + f"**‣ File Name**: `{razo}`" + "\n" + "**‣ Video**: `720p HEVC x265 10Bit`" + "\n" + "**‣ Audio**: `Japanese`" + "\n" + f"**‣ Subtitle**: `Japanese, English, Czech, Danish, German, Modern Greek (1453-), Spanish (Latin American), Spanish (European), Finnish, French (European), Hungarian, Italian, Korean, Dutch, Norwegian, Polish, Portuguese (Brazilian), Portuguese (European), Romanian, Slovak, Swedish, Turkish, Chinese (Hong Kong), Chinese (Traditional)`"
+        sourcetext =  f"**#Encoded_File**" + "\n" + f"**‣ File Name**: `{razo}`" + "\n" + "**‣ Video**: `720p HEVC x265 10Bit`" + "\n" + "**‣ Audio**: `Japanese`" + "\n" + f"**‣ Subtitle**: `English, Español (Latino), Español (Castellano)`"
         untext = await main.reply_text(sourcetext)
         await asyncio.sleep(2)
         await app.send_sticker(KAYO_ID,"CAACAgUAAxkBAAEU_9FkRrLoli952oqIMVFPftW12xYLRwACGgADQ3PJEsT69_t2KrvBLwQ")

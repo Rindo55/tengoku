@@ -153,41 +153,17 @@ async def start_uploading(data):
             thumb=thumbnail
 
             )   
-        os.rename(file, fpath)
-        server = requests.get(url="https://api.gofile.io/getServer").json()["data"]["server"]
-        uploadxz = requests.post(url=f"https://{server}.gofile.io/uploadFile", files={"upload_file": open(fpath, 'rb')}).json()
-        directlink = uploadxz["data"]["downloadPage"]    
-        gotn_url = f"https://tnshort.net/api?api=fea911843f6e7bec739708f3e562b56184342089&url={directlink}&format=text"
-        gofinal = requests.get(gotn_url)
-        go_text = gofinal.text
-        gourl = go_text
-        da_url = "https://da.gd/"
-        gofile_url = f"{da_url}shorten"
-        goresponse = requests.get(gofile_url, params={"url": gourl})
-        gofuk_text = goresponse.text.strip()
         sourcefileid = str(videox.message_id)
         source_link = f"https://telegram.me/somayukibot?start=animxt_{str_to_b64(sourcefileid)}"
         com_id = int(main.message_id) + 1
         encom_id = int(main.message_id) + 2
         comment = f"t.me/c/{uj_id}/{com_id}?thread={com_id}"
         encomment = f"t.me/c/{uj_id}/{encom_id}?thread={encom_id}"
-        repl_markup=InlineKeyboardMarkup(
-                [
-                    [
-                         InlineKeyboardButton(
-                            text="🐌TG FILE",
-                            url=source_link,
-                        ),
-                         InlineKeyboardButton(
-                              text="🚀GoFile",
-                              url=gofuk_text,
-                        ),
-                    ],
-                ],
-            )        
+        repl_markup=InlineKeyboardMarkup([[InlineKeyboardButton(
+                                                            "🐌TG FILE", url=source_link)]])        
         enrepl_markup=InlineKeyboardMarkup([[InlineKeyboardButton(
                                                               "💬Comments", url=encomment)]])
-        orgtext =  "**#Source_File**" + "\n" + f"**‣ File Name: `{filed}`**" + "\n" + "**‣ Video**: `1080p x264`" + "\n" + "**‣ Audio**: `Japanese`" + "\n" + f"**‣ Subtitle**: `English, Español (Latino), Español (Castellano)`" + "\n" + f"**‣ File Size**: `{nyaasize}`" + "\n" + f"**‣ Duration**: {durationx}" + "\n" + f"**‣ Downloads**: [🔗Telegram File]({source_link}) [🔗Gofile]({gofuk_text})"
+        orgtext =  "**#Source_File**" + "\n" + f"**‣ File Name: `{filed}`**" + "\n" + "**‣ Video**: `1080p x264`" + "\n" + "**‣ Audio**: `Japanese`" + "\n" + f"**‣ Subtitle**: `English, Español (Latino), Español (Castellano)`" + "\n" + f"**‣ File Size**: `{nyaasize}`" + "\n" + f"**‣ Duration**: {durationx}" + "\n" + f"**‣ Downloads**: [🔗Telegram File]({source_link})"
         await asyncio.sleep(5)
         untextx = await main.reply_text(orgtext)
         await asyncio.sleep(3)
@@ -197,7 +173,7 @@ async def start_uploading(data):
         untext = await main.reply_text(sourcetext)
         await asyncio.sleep(2)
         await app.send_sticker(KAYO_ID,"CAACAgUAAxkBAAEU_9FkRrLoli952oqIMVFPftW12xYLRwACGgADQ3PJEsT69_t2KrvBLwQ")
-        os.rename(fpath,"video.mkv")
+        os.rename(file,"video.mkv")
         await asyncio.sleep(5)
         compressed = await compress_video(duration,untext,name,sourcetext)
 

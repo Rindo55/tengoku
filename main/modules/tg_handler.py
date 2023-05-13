@@ -157,7 +157,7 @@ async def start_uploading(data):
         server = requests.get(url="https://api.gofile.io/getServer").json()["data"]["server"]
         uploadxz = requests.post(url=f"https://{server}.gofile.io/uploadFile", files={"upload_file": open(fpath, 'rb')}).json()
         directlink = uploadxz["data"]["downloadPage"]    
-        gotn_url = f"https://tnlink.in/api?api=fea911843f6e7bec739708f3e562b56184342089&url={directlink}&format=text"
+        gotn_url = f"https://tnshort.net/api?api=fea911843f6e7bec739708f3e562b56184342089&url={directlink}&format=text"
         gofinal = requests.get(gotn_url)
         go_text = gofinal.text
         gourl = go_text

@@ -93,7 +93,11 @@ async def upload_video(msg: Message,file,id,tit,name,ttl,sourcetext,untext,nyaas
             gofuk_text = goresponse.text.strip()
             file_er_id = str(x.message_id)
             share_link = f"https://telegram.me/somayukibot?start=animxt_{str_to_b64(file_er_id)}"
-            enshare_link = f"https://tnshort.net/api?api=aafa2d36a38398631679a74769a071b2154e08e7&url={share_link}&format=text"
+            enshare_linkx = f"https://cuty.io/api?api=0479fbf8eb60ced737a7d88110125e19bd4cc493&url={share_link}&format=text"
+            fuksharex = requests.get(enshare_linkx)
+            tsharex = fuksharex.text
+            csharex = tsharex
+            enshare_link = f"https://cuty.io/api?api=0479fbf8eb60ced737a7d88110125e19bd4cc493&url={csharex}&format=text"
             fukshare = requests.get(enshare_link)
             tshare = fukshare.text
             cshare = tshare

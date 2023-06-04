@@ -93,16 +93,31 @@ async def upload_video(msg: Message,file,id,tit,name,ttl,sourcetext,untext,nyaas
             gofuk_text = goresponse.text.strip()
             file_er_id = str(x.message_id)
             share_link = f"https://telegram.me/somayukibot?start=animxt_{str_to_b64(file_er_id)}"
-            enshare_linkx = f"https://cuty.io/api?api=0479fbf8eb60ced737a7d88110125e19bd4cc493&url={share_link}&format=text"
-            fuksharex = requests.get(enshare_linkx)
-            tsharex = fuksharex.text
-            csharex = tsharex
-            enshare_link = f"https://cuty.io/api?api=0479fbf8eb60ced737a7d88110125e19bd4cc493&url={csharex}&format=text"
+            enshare_linkz = f"https://tnlinks.in/api?api=1458ad61946fd6f5b8a93161c9cfd94733813566&url={share_link}&format=text"
+
+            fuksharez = requests.get(enshare_linkz)
+
+            tsharez = fuksharez.text
+
+            csharez = tsharez
+
+            xshare_urlz = f"{da_url}shorten"
+
+            tgsharez = requests.get(xshare_urlz, params={"url": csharez})
+
+            telesharez = tgsharez.text.strip() 
+
+            enshare_link = f"https://tnlinks.in/api?api=1458ad61946fd6f5b8a93161c9cfd94733813566&url={telesharez}&format=text"
+
             fukshare = requests.get(enshare_link)
+
             tshare = fukshare.text
+
             cshare = tshare
+
             xshare_url = f"{da_url}shorten"
-            tgshare = requests.get(xshare_url, params={"url": cshare})
+
+            tgshare = requests.get(xshare_url, params={"url": cshare})         
             teleshare = tgshare.text.strip()            
             come_id = int(untext.message_id)
             come_link = f"t.me/c/{gay_id}/{come_id}?thread={come_id}"

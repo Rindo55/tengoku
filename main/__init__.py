@@ -21,7 +21,10 @@ class app(Client):
         )
         self.LOGGER = LOGGER
 
+async def start(self):
         await super().start()
+
+        self.uptime = datetime.now()
       
 
 

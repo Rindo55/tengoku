@@ -1,28 +1,35 @@
 from pyrogram import Client, idle
 
 from pyrogram.types import Message, InlineKeyboardButton, InlineKeyboardMarkup
-
+import sys
 import os
 from config import *
 import libtorrent as lt
-import time 
+from datetime import datetime
 import logging
 
-logging.basicConfig(format='[%(levelname) 5s/%(asctime)s] %(name)s: %(message)s',
-                    level=logging.WARNING)
+ 
+class app(Client):
+    def __init__(self):
+        super().__init__(
+            name="app",
+            api_hash=API_HASH,
+            api_id=APP_ID,            
 
-logging.getLogger("pyrogram").setLevel(logging.WARNING)
-app = Client(
-    "bot",
-    api_id=API_ID,
-    api_hash=API_HASH,
-    bot_token=BOT_TOKEN
-  )
-app.start()
+       
+            bot_token=BOT_TOKEN
+        )
+        self.LOGGER = LOGGER
+
+        await super().start()
+      
+
+
+
 
 
 print("[INFO]: STARTING Lib Torrent CLIENT")
-idle()
+await app.run()
 ses = lt.session()
 ses.listen_on(6881, 6891)
 

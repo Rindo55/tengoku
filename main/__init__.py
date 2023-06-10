@@ -1,4 +1,4 @@
-from pyrogram import Client
+from pyrogram import Client, idle
 import os
 from config import *
 import libtorrent as lt
@@ -17,7 +17,9 @@ app = Client(
   )
 app.start()
 
+
 print("[INFO]: STARTING Lib Torrent CLIENT")
+idle()
 ses = lt.session()
 ses.listen_on(6881, 6891)
 

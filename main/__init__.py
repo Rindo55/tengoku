@@ -23,16 +23,16 @@ class app(Client):
 
 async def start(self):
         await super().start()
-
         self.uptime = datetime.now()
-      
+        print("[INFO]: STARTING Lib Torrent CLIENT")  
+        
+        await app.run()
 
 
 
 
 
-print("[INFO]: STARTING Lib Torrent CLIENT")
-await app.run()
+
 ses = lt.session()
 ses.listen_on(6881, 6891)
 

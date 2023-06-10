@@ -1,4 +1,7 @@
 from pyrogram import Client, idle
+
+from pyrogram.types import Message, InlineKeyboardButton, InlineKeyboardMarkup
+
 import os
 from config import *
 import libtorrent as lt

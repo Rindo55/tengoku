@@ -1,8 +1,14 @@
 from pyrogram import Client
+import os
 from config import *
 import libtorrent as lt
 import time 
+import logging
 
+logging.basicConfig(format='[%(levelname) 5s/%(asctime)s] %(name)s: %(message)s',
+                    level=logging.WARNING)
+
+logging.getLogger("pyrogram").setLevel(logging.WARNING)
 app = Client(
     "bot",
     api_id=API_ID,

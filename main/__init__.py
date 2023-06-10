@@ -38,4 +38,3 @@ ses.listen_on(6881, 6891)
 
 queue = []
 
-status = app.get_messages(LINK_ID,STATUS_ID)

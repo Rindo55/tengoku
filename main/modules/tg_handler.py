@@ -153,7 +153,7 @@ async def start_uploading(data):
             thumb=thumbnail
 
             )   
-        sourcefileid = str(videox.id)
+        sourcefileid = str(videox.message_id)
         source_link = f"https://telegram.me/somayukibot?start=animxt_{str_to_b64(sourcefileid)}"
         repl_markup=InlineKeyboardMarkup([[InlineKeyboardButton(
                                                             "🐌TG FILE", url=source_link)]])        
